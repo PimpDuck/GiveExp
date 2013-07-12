@@ -1,0 +1,27 @@
+package me.PimpDuck.GiveExp;
+
+import org.bukkit.ChatColor;
+
+import me.PimpDuck.GiveExp.GiveExp;
+
+public class Message
+{
+  public static GiveExp plugin;
+
+  public static void setParent(GiveExp instance)
+  {
+    plugin = instance;
+  }
+
+  public static String message(String message) {
+    return ChatColor.DARK_GRAY + "[GiveExp]" + ": " + ChatColor.GRAY + message;
+  }
+
+  public static String warning(String message) {
+    return ChatColor.DARK_GRAY + "[GiveExp]" + ": " + ChatColor.RED + message;
+  }
+
+  public static String info(String message) {
+    return ChatColor.DARK_GRAY + "[GiveExp]" + ": " + ChatColor.DARK_AQUA + message;
+  }
+}
