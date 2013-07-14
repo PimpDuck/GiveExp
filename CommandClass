@@ -1,0 +1,112 @@
+package me.PimpDuck.GiveExp;
+
+import org.bukkit.ChatColor;
+import org.bukkit.command.*;
+import org.bukkit.entity.Player;
+
+public class CommandClass implements CommandExecutor{
+  
+	
+    @Override
+	public boolean onCommand(CommandSender sender, Command cmd, String command, String[] args) {	 
+
+        Player player = (Player) sender;
+
+	    if (args.length == 0){
+	    	if(player.hasPermission("giveexp.info")){
+	        player.sendMessage(ChatColor.DARK_RED + "[GiveExp] " + ChatColor.GOLD + ("You can use /giveexp 10, 20, 30, 40, 50, 60, 70, 80, 90, 100. As long as you have the right permission ;)"));
+	    	}else {
+	    		player.sendMessage(ChatColor.DARK_RED + "[GiveExp]" + ChatColor.RED + "You don't have permission to see this!");
+	    	}
+	    }else{
+	        String arg = args[0];
+
+	        if (args.length == 1){
+                if (arg.equalsIgnoreCase("10")){
+    	        	if(player.hasPermission("giveexp.10")){
+                	player.giveExpLevels(10);
+                    player.sendMessage(ChatColor.DARK_RED + "[GiveExp] " + ChatColor.GOLD + "You have been given 10 EXP levels!");
+                }else {
+                       player.sendMessage(ChatColor.DARK_RED + "[GiveExp] " + ChatColor.RED + "You don't have permission to do this!");
+                }
+                }if (arg.equalsIgnoreCase("20")){
+                	if(player.hasPermission("giveexp.20")) {
+                    	player.giveExpLevels(20);
+                        player.sendMessage(ChatColor.DARK_RED + "[GiveExp] " + ChatColor.GOLD + "You have been given 20 EXP levels!");
+                    	} else {
+                            player.sendMessage(ChatColor.DARK_RED + "[GiveExp] " + ChatColor.RED + "You don't have permission to do this!");
+                    	}
+                        }if (arg.equalsIgnoreCase("30")){
+                        	if(player.hasPermission("giveexp.30")){
+                        	player.giveExpLevels(30);
+                            player.sendMessage(ChatColor.DARK_RED + "[GiveExp] " + ChatColor.GOLD + "You have been given 30 EXP levels!");
+                        	} else {
+                                player.sendMessage(ChatColor.DARK_RED + "[GiveExp] " + ChatColor.RED + "You don't have permission to do this!");
+                        	}
+                        }if (arg.equalsIgnoreCase("40")){
+                        	if(player.hasPermission("giveexp.40")) {
+                        	player.giveExpLevels(40);
+                            player.sendMessage(ChatColor.DARK_RED + "[GiveExp] " + ChatColor.GOLD + "You have been given 40 EXP levels!");
+                        	}else {
+                                player.sendMessage(ChatColor.DARK_RED + "[GiveExp] " + ChatColor.RED + "You don't have permission to do this!");
+                        	}
+                        }if (arg.equalsIgnoreCase("50")){
+                        	if(player.hasPermission("giveexp.50")) {
+                        	player.giveExpLevels(50);
+                            player.sendMessage(ChatColor.DARK_RED + "[GiveExp] " + ChatColor.GOLD + "You have been given 50 EXP levels!");
+                        	} else {
+                                player.sendMessage(ChatColor.DARK_RED + "[GiveExp] " + ChatColor.RED + "You don't have permission to do this!");
+
+                        	}
+                        }if (arg.equalsIgnoreCase("60")){
+                        	if(player.hasPermission("giveexp.60")){
+                        	player.giveExpLevels(60);
+                            player.sendMessage(ChatColor.DARK_RED + "[GiveExp] " + ChatColor.GOLD + "You have been given 60 EXP levels!");
+                        	}else {
+                                player.sendMessage(ChatColor.DARK_RED + "[GiveExp] " + ChatColor.RED + "You don't have permission to do this!");
+
+                        	}
+                        }if (arg.equalsIgnoreCase("70")){
+                        	if(player.hasPermission("giveexp.70")){
+                        	player.giveExpLevels(70);
+                            player.sendMessage(ChatColor.DARK_RED + "[GiveExp] " + ChatColor.GOLD + "You have been given 70 EXP levels!");
+                        	} else {
+                                player.sendMessage(ChatColor.DARK_RED + "[GiveExp] " + ChatColor.RED + "You don't have permission to do this!");
+                        	}
+                        }if (arg.equalsIgnoreCase("80")){
+                        	if(player.hasPermission("giveexp.80")){
+                        	player.giveExpLevels(80);
+                            player.sendMessage(ChatColor.DARK_RED + "[GiveExp] " + ChatColor.GOLD + "You have been given 80 EXP levels!");
+                        	}else {
+                                player.sendMessage(ChatColor.DARK_RED + "[GiveExp] " + ChatColor.RED + "You don't have permission to do this!");
+                        	}
+                        }if (arg.equalsIgnoreCase("90")){
+                        	if(player.hasPermission("giveexp.90")){
+                        	player.giveExpLevels(90);
+                            player.sendMessage(ChatColor.DARK_RED + "[GiveExp] " + ChatColor.GOLD + "You have been given 90 EXP levels!");
+                        	}else {
+                                player.sendMessage(ChatColor.DARK_RED + "[GiveExp] " + ChatColor.RED + "You don't have permission to do this!");
+                        	}
+                        }if (arg.equalsIgnoreCase("100")){
+                        	if(player.hasPermission("giveexp.100")){
+                        	player.giveExpLevels(100);
+                            player.sendMessage(ChatColor.DARK_RED + "[GiveExp] " + ChatColor.GOLD + "You have been given 100 EXP levels!");
+                        	}else {
+                                player.sendMessage(ChatColor.DARK_RED + "[GiveExp] " + ChatColor.RED + "You don't have permission to do this!");
+                        	}
+                        }else{
+                            if (GiveExp.playerDelayed(player)){
+                            if (GiveExp.getRemainingTime(player) < 1){
+                            	GiveExp.removeDelayedPlayer(player);
+                            }else{
+                                int remaining = GiveExp.getRemainingTime(player);
+                                String seconds = remaining == 1 ? " second" : " seconds";
+                                player.sendMessage(ChatColor.DARK_RED + "[GiveExp] " + ChatColor.GOLD + ("You must wait " + remaining + seconds + " before using this command again."));
+                            }
+                  }
+               }
+	        }
+   }
+		return false;
+}
+}
