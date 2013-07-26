@@ -2,6 +2,10 @@ package me.PimpDuck.GiveExp;
 
 import java.util.HashMap;
 
+package me.PimpDuck.GiveExp;
+
+import java.util.HashMap;
+
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.*;
@@ -29,7 +33,7 @@ public class CommandClass implements CommandExecutor{
 			}
 			player.giveExpLevels(amount);
 			player.sendMessage(ChatColor.DARK_RED + "[GiveExp] " + ChatColor.GOLD + "You have been given " + amount + " EXP levels!");
-			player.getName();
+			GiveExp.addDelayedPlayer(player);
 		}else
 		{
 			player.sendMessage(ChatColor.DARK_RED + "[GiveExp] " + ChatColor.RED + "You require permission node giveexp." + amount + " to run this command!");
