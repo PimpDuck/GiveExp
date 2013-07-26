@@ -32,7 +32,7 @@ public class GiveExp extends JavaPlugin{
 
         configurationFile = new FileManager(this, "config.yml");
 
-        delayedPlayers = new HashMap();
+        delayedPlayers = new HashMap<String, Long>();
         delay = configurationFile.getInt("options.delay");
         
         commandclass = new CommandClass();
@@ -52,20 +52,20 @@ public class GiveExp extends JavaPlugin{
     log.info("[GiveExp] Verison 1.0 has been disabled!");
   }
   
-  public static void addDelayedPlayer(String player) {
-	    delayedPlayers.put(player, Long.valueOf(System.currentTimeMillis()));
+  public static void addDelayedPlayer(Player player) {
+	    delayedPlayers.put(player.getName(), System.currentTimeMillis());
 	  }
 
 	  public static void removeDelayedPlayer(Player player) {
-	    delayedPlayers.remove(player);
+	    delayedPlayers.remove(player.getName());
 	  }
 
 	  public static boolean playerDelayed(Player player) {
-	    return delayedPlayers.containsKey(player);
+	    return delayedPlayers.containsKey(player.getName());
 	  }
 
 	  public static Long getPlayerDelay(Player player) {
-	    return (Long)delayedPlayers.get(player);
+	    return (Long)delayedPlayers.get(player.getName());
 	  }
 
 	  public static int getDelay(int multiplier) {
@@ -75,5 +75,4 @@ public class GiveExp extends JavaPlugin{
 	  public static int getRemainingTime(Player player) {
 	    return (int)(getDelay(1) - (System.currentTimeMillis() - getPlayerDelay(player).longValue()) / 1000L);
 	  }
-
   }
