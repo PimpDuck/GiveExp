@@ -2,10 +2,6 @@ package me.PimpDuck.GiveExp;
 
 import java.util.HashMap;
 
-package me.PimpDuck.GiveExp;
-
-import java.util.HashMap;
-
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.*;
